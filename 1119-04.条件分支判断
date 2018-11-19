@@ -55,6 +55,10 @@ b.条件判断例子
 	3.python中没有switch-case语句
 	4.一个判断语句中可以嵌入多个判断语句
 
+1.分析社保信息，输入工资，计算出对应社保缴费信息，计算最后到手工资有多少
+详细说明：https://zhidao.baidu.com/question/551470542.html
+2.计算个人所得税，输入工资，输出所缴纳个人所得税
+详细说明：https://baike.baidu.com/item/%E4%B8%AA%E4%BA%BA%E6%89%80%E5%BE%97%E7%A8%8E%E7%A8%8E%E7%8E%87%E8%A1%A8/2552067
 
 
 
