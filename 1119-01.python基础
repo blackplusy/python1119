@@ -27,6 +27,6 @@ a.开发工具
 b.python自带环境
 c.python 文件名
 注意：python开发的文件都是以.py结尾
-
+补充：sudo apt-get install terminator  安装terminator软件
 
 
