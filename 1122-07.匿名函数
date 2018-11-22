@@ -22,7 +22,7 @@ print('相加后的值是',sum(10,20))
 stu=[{'name':'pig','age':18},{'name':'dog','age':3},{'name':'cat','age':30}]
 stu.sort(key=lambda x:x['age'])
 print(stu)
-mbda当作一个变量
+lambda当作一个变量
 def operation(a,b,opt):
         re=opt(a,b)
         return re
