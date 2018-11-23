@@ -15,7 +15,7 @@ a.python中类定义的方法
 		方法列表
 
 b.类定义的例子
-ass student:
+class student:
         def study(self):
                 print('im study')
         def play(self):
