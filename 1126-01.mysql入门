@@ -145,6 +145,39 @@ d.mysql基础
 	source sakila-schema.sql;
 	f.导入数据库数据文件
 	source sakila-data.sql;
+10.数据的查询
+	查询可以查询指定的行，指定的列，指定行的列
+	语法：select 列 from 表 [where 条件];	
+	例子：查询customer表中所有的数据
+	select * from customer;
+	查询customer表中所有的姓氏和名字
+	select last_name,first_name from customer;
+	查询customer表中名字为Mike的姓氏
+	select last_name from customer where first_name='Mike';
+	a.where条件
+	a1.比较运算符
+		>	大于
+		<	小于
+		=	等于
+		>=	大于等于
+		<=	小于等于
+		!=	不等于
+		<>	不等于
+		例子：查询customer表中customer_id小于100的所有信息
+		select * from customer where customer_id<100;
+		例子：查询customer表中名字不是Mike的所有信息
+		select * from customer where first_name!='Mike';
+	a2.关系运算符
+		and	同时满足条件
+		or	满足一个条件即可
+		not	不满足条件
+		例子：查询customer表中customer_id范围在100和110之间的所有人员的名字
+		select first_name from customer where customer_id >=100 and customer_id<=110;
+		例子：查询customer表中名字是Mike或者heygor的所有信息
+		select * from customer where first_name='Mike' or first_name='heygor';
+
+
+
 	
 
 
