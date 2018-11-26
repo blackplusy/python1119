@@ -175,8 +175,34 @@ d.mysql基础
 		select first_name from customer where customer_id >=100 and customer_id<=110;
 		例子：查询customer表中名字是Mike或者heygor的所有信息
 		select * from customer where first_name='Mike' or first_name='heygor';
-
-
+	a3.区间
+		between...and...
+		前面小，后面大。包括端点
+		例子：查询customer表中customer_id范围在100和110之间的所有人员的名字
+		select first_name from customer where customer_id between 100 and 110;
+	a4.模糊查询
+		当信息不完整时候，使用模糊查询，通常和字符串类型一起使用
+		like
+		_	一个字符
+		%	任意个字符
+		例子：查询customer表中名字以M开头的所有信息
+		select * from customer where first_name like 'M%';
+		例子：查询customer表中名字以E结尾的所有信息
+		select * from customer where first_name like '%E';
+		例子：查询customer表中名字是6个字符的所有信息
+		select * from customer where first_name like '______';
+	a5.空值查询
+		空没有任何数据类型，没有任何值
+		不能用于比较和运算
+		查询时候使用is null或者is not null
+		例子：查询kr表中price为空的所有信息
+		select * from kr where price is null;
+		例子：查询kr表中price不是空的所有信息
+		select  * from kr where price is not  null;
+	a6.in(在...里面)
+		或的关系
+		例子：查询customer表中名字是Mike或者heygor的所有信息
+		select * from customer where first_name in ('Mike','heygor');
 
 	
 
