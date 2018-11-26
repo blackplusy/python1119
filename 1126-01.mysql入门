@@ -73,13 +73,11 @@ d.mysql基础
 	补充：查看表结构的命令
 	desc kr;
 	
-
-
-
 	补充：创建数据库
 	create database test;
 	创建test数据库
 
+创建商品(goods)表,商品id (id) 数字类型，商品名称(gname)字符类型，商品分类(category) 字符类型
 
 
 
