@@ -132,8 +132,20 @@ d.mysql基础
 	语法：truncate table 表;
 	例子：删除kr表中所有数据
 	truncate table kr;
-
-
+9.sakila数据库安装
+	a.下载sakila数据库
+	https://dev.mysql.com/doc/index-other.html
+	b.进入到压缩包所在目录，解压压缩包
+	tar -xzvf sakila-db.tar.gz 
+	c.进入到已经解压的目录下
+	cd sakila-db/
+	d.登录mysql数据库
+	mysql -u root -p
+	e.导入数据库结构
+	source sakila-schema.sql;
+	f.导入数据库数据文件
+	source sakila-data.sql;
+	
 
 
 
