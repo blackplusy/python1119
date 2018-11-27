@@ -87,10 +87,27 @@ max()   最大值
 select max(country_id) from country;
 查询country_id为上面查询出来结果的国家名称
 select country from country where country_id=(select max(country_id) from country);
+补充：
+查询子句查询出来结果可能是一个也可能是多个，如果是多个的话，不能用=，用in
+单行子查询   =
+多行子查询   in
 
 问题：
 1.用子查询查询国家名称为China的所有D开头的城市名称
+a.查询满足条件的国家表中的country_id
+select country_id from country where country='China';
+b.查询city表中country_id为上面查询出来结果的满足条件的名称
+select city from city where country_id =(select country_id from country where country='China') and city like 'D%';
+
 2.用子查询查询城市名称为Daxian的所有客户的姓名
+a.查询city表中满足条件的city_id
+select city_id from city where city='Daxian';
+b.查询address表中city_id为上面查询出来结果的address_id
+select address_id from address where city_id in (select city_id from city where city='Daxian');
+c.查询customer表中address_id为上面查询出来结果的客户姓名
+select last_name,first_name from customer 
+where address_id in (select address_id from address where city_id in (select city_id from city where city='Daxian'));
+
 
 
 
