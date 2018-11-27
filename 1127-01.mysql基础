@@ -89,7 +89,7 @@ select max(country_id) from country;
 select country from country where country_id=(select max(country_id) from country);
 
 问题：
-1.用子查询查询国家名称为country的所有D开头的城市名称
+1.用子查询查询国家名称为China的所有D开头的城市名称
 2.用子查询查询城市名称为Daxian的所有客户的姓名
 
 
