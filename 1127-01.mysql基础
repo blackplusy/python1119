@@ -1,0 +1,81 @@
+1.迪卡尔积
+当我们查询数据时候，一张表无法满足条件，使用多表查询
+两张表不做任何关联产生的数据
+表1
+1
+2
+
+表2
+1 a
+2 b
+3 c
+
+1 1 a
+1 2 b
+1 3 c
+2 1 a
+2 2 b
+2 3 c
+
+查询city表中所有数据
+select count(*) from city ;
+查询country表中所有数据
+select count(*) from country;
+查询两张表的迪卡尔积
+select count(*) from city,country;
+迪卡尔积会造成数据量成倍增加，无效数据增多，降低系统性能
+为了避免产生迪卡尔积，使用内联查询、左联查询、右联查询
+内联查询
+语法：
+select 列 from 表1 inner join 表2 on 表1.列=表2.列;
+select 列 from 表1,表2 where 表1.列=表2.列;
+例子：
+查询国家名称为China的城市名称有哪些？
+列：
+	国家名称
+	城市名称
+表：
+	city
+	country
+关联：
+	select * from city,country
+	where city.country_id=country.country_id;
+过滤：
+	select city from city,country
+	where city.country_id=country.country_id
+	and country='China';
+
+查询城市名称为Daxian的国家名称是什么？country_id是什么？
+列：
+	城市名称
+	国家名称
+表：
+	city
+	country
+关联：
+	select * from city c,country co
+	where c.country_id=co.country_id;
+过滤：
+	select co.country,c.country_id from city c,country co
+        where c.country_id=co.country_id
+	and c.city='Daxian';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
