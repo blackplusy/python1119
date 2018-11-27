@@ -61,7 +61,24 @@ select 列 from 表1,表2 where 表1.列=表2.列;
 	and c.city='Daxian';
 
 查询国家名称为China的并且城市名称以D开头的所有城市名称
+	 select  c.city  from city c,country co
+	 where c.country_id=co.country_id
+	 and co.country='China'
+	 and c.city like 'D%';
 查询客户名字为Mike所在的国家名称
+列：
+名字
+国家
+表：
+country
+customer
+关联：
+select co.country from country co,city c,address a,customer cu
+where c.country_id=co.country_id
+and c.city_id=a.city_id
+and cu.address_id=a.address_id
+and cu.first_name='Mike';
+
 
 
 
