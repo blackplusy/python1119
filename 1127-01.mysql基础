@@ -60,24 +60,35 @@ select 列 from 表1,表2 where 表1.列=表2.列;
         where c.country_id=co.country_id
 	and c.city='Daxian';
 
-查询国家名称为China的并且城市名称以D开头的所有城市名称
-	 select  c.city  from city c,country co
-	 where c.country_id=co.country_id
-	 and co.country='China'
-	 and c.city like 'D%';
-查询客户名字为Mike所在的国家名称
-列：
-名字
-国家
-表：
-country
-customer
-关联：
-select co.country from country co,city c,address a,customer cu
-where c.country_id=co.country_id
-and c.city_id=a.city_id
-and cu.address_id=a.address_id
-and cu.first_name='Mike';
+1.jpg
+select * from test1 where department='计算机系' and place='北京';
+update test1 set department='信息学院' where department='计算机系';
+select  t1.no,t1.name,t2.grade,t2.courses from test1 t1,test2 t2 where t1.no=t2.no and t2.grade>=75;
+
+4.jpg
+1.select grade,s# from sc where c#='C2';
+2.select sname from s where sname like 'D%';
+3.select s.s#,s.sname  from s,sc,c where s.s#=sc.s# and sc.c#=c.c# and c.cname='Maths';
+4.select s# from sc where c#='C2' or c#='C4';
+========================================================================
+子查询
+一条SQL语句的执行依赖于另外一条SQL语句的执行结果
+查询国家名称为China的城市名称有哪些？
+查询country表中国家名称为China的country_id
+select country_id from country where country='China';
+查询city表中country_id为上面查询出来结果的城市名称
+select city from city where country_id=23;
+select city from city where country_id=(select country_id from country where country='China');
+注意：子查询可以用在数据查询、新增、修改、删除方面
+
+查询country表中最大country_id的国家名称
+max()   最大值
+查询出国家表中最大country_id是什么？
+select max(country_id) from country;
+查询country_id为上面查询出来结果的国家名称
+select country from country where country_id=(select max(country_id) from country);
+
+
 
 
 
