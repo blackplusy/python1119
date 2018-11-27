@@ -108,6 +108,53 @@ c.查询customer表中address_id为上面查询出来结果的客户姓名
 select last_name,first_name from customer 
 where address_id in (select address_id from address where city_id in (select city_id from city where city='Daxian'));
 
+======================================================================
+分组查询
+a.分组函数(聚合)
+max()   最大
+min()   最小
+avg()	平均
+sum()	求和
+count() 计数
+分组函数通常和分组一起使用，也可以单独使用
+例子：查询city表中最大city_id,最小city_id
+select max(city_id),min(city_id) from city;
+
+b.分组
+按照某种条件进行分类
+语法：select 列 from 表
+	where 条件
+		group by 分组条件
+			having 分组后过滤条件;
+
+分组条件的判断：
+	每后面跟的就是分组条件
+
+例子：查询city表中每个国家有多少个城市？要求显示country_id,城市数量
+select  country_id,count(*)   from city
+group by country_id;
+
+例子：查询每个国家有多少个城市？要求显示国家名称和城市数量
+关联：
+	select * from city c,country co
+	where c.country_id=co.country_id;
+过滤：
+	select  co.country,count(*) from city c,country co
+        where c.country_id=co.country_id
+	group by co.country;
+
+分组后过滤
+where	分组前过滤	不能直接跟分组函数
+having  分组后过滤	可以直接跟分组函数
+例子:查询城市数量大于50 的国家名称
+        select  co.country,count(*) from city c,country co
+        where c.country_id=co.country_id
+        group by co.country
+	having count(*)>50;
+补充：
+	分组分为单分组和多分组，按照分组条件进行分类
+	每个门店每天的营业总额？
+	group by 门店，天
 
 
 
