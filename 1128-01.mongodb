@@ -36,10 +36,41 @@ d.mongodb的基础命令
 	show collections 查看当前数据库有哪些集合
 	db.startup_log.find()
 
+ 补充：
+	win下面mongodb不会自动启动，需要手动命令启动
+	win+r--cmd
+	1.在e盘创建一个文件夹data
+	md e:\data
+	2.输入启动命令
+		mongod --dbpath e:\data --logpath e:\data\mongo.log
+		dbpath:	数据库数据存放的路径
+		logpath：存放日志的位置
 
 
+e.curd（增删改查）
+	文档的新增
+	db.xiyouji.insert({name:'tangsir',age:18})
+	文档的查询
+	db.xiyouji.find({name:'tangsir'})
+	文档的修改
+	db.xiyouji.update({name:'tangsir'},{$set:{age:100}})
+	文档的删除
+	b.xiyouji.remove({age:100})
 
-
+f.文档的新增
+	新增普通文档
+	db.xiyouji.insert({name:'benbenrba'})
+	新增文档指定_id
+	db.xiyouji.insert({_id:0,name:'tai2',age:18})
+	新增内嵌文档
+	db.xiyouji.insert({name:'5kong',jingli:{kill:1000,hit:2}})
+	新增多个文档
+	db.xiyouji.insert([{name:'niumo'},{name:'tiantian'},{name:'redhair'}])
+g.文档的删除
+	删除指定文档
+	db.xiyouji.remove({name:'5kong'})
+	删除所有文档
+	db.xiyouji.remove({})
 
 
 
