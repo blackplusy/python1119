@@ -30,7 +30,7 @@ db.emp.find({$or:[{sal:{$gt:1500}},{sal:{$gt:2000}},{sal:{$gt:2500}}]})
 
 9.查询emp集合中佣金不为空的人并且工资大于800，1500，2000的所有工资的人的所有信息
 $and:[{sal:{$gt:800}},{sal:{$gt:1500}},{sal:{$gt:2000}}]
-db.emp.find({$and:[{comm:{$type:{$ne:10}}},{$and:[{sal:{$gt:800}},{sal:{$gt:1500}},{sal:{$gt:2000}}]}]})
+db.emp.find({$and:[{comm:{$ne:{$type:10}}},{$and:[{sal:{$gt:800}},{sal:{$gt:1500}},{sal:{$gt:2000}}]}]})
 
 
 
