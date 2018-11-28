@@ -55,7 +55,7 @@ e.curd（增删改查）
 	文档的修改
 	db.xiyouji.update({name:'tangsir'},{$set:{age:100}})
 	文档的删除
-	b.xiyouji.remove({age:100})
+	db.xiyouji.remove({age:100})
 
 f.文档的新增
 	新增普通文档
