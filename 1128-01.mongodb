@@ -55,7 +55,7 @@ e.curd（增删改查）
 	文档的修改
 	db.xiyouji.update({name:'tangsir'},{$set:{age:100}})
 	文档的删除
-	db.xiyouji.remove({age:100})
+	b.xiyouji.remove({age:100})
 
 f.文档的新增
 	新增普通文档
@@ -71,6 +71,50 @@ g.文档的删除
 	db.xiyouji.remove({name:'5kong'})
 	删除所有文档
 	db.xiyouji.remove({})
+
+h.文档的查询
+	查询所有文档内容
+	db.xiyouji.find()
+	查询指定文档内容
+	db.xiyouji.find({age:100})
+	查询指定文档的指定属性
+	db.xiyouji.find({age:100},{_id:0,name:1})
+	
+f.查询表达式
+	比较
+		$gt	大于
+		$gte	大于等于
+		$lt	小于
+		$lte	小于等于
+		$ne	不等于
+	db.xiyouji.find({age:{$gt:50}})
+	db.xiyouji.find({age:{$ne:100}})
+	关系
+		$and	同时满足条件
+		$or	满足一个条件即可
+	db.xiyouji.find({$and:[{age:{$lt:200}},{name:'simida'}]})
+	db.xiyouji.find({$or:[{name:'gaga'},{name:'simida'}]})
+	存在性
+		$exists
+	db.xiyouji.find({age:{$exists:1}})
+	数据类型判断
+		$type
+	double 1
+	string 2
+	object 3
+	array  4
+	binary data 5
+	object id 7
+	boolean   8
+	date	  9
+	null	  10
+	db.xiyouji.find({age:{$type:2}})
+
+		
+
+
+
+
 
 
 
