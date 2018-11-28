@@ -156,6 +156,21 @@ having  分组后过滤	可以直接跟分组函数
 	每个门店每天的营业总额？
 	group by 门店，天
 
+select * from dt_pay where salary>(select avg(salary) from dt_pay);
+
+select * from dt_pay;
+
+truncate table dt_pay;
+
+--6.jpg
+create table user(
+	userid  int(11),
+	username varchar2(20),
+	passwd   varchar2(20),
+	crtime   date
+);
+
+insert into user(1002,'user1','test',to_date('2015-01-01','YYYY-MM-DD'));
 
 
 
