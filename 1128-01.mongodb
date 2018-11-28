@@ -109,6 +109,24 @@ f.查询表达式
 	date	  9
 	null	  10
 	db.xiyouji.find({age:{$type:2}})
+g.修改文档
+	db.集合.update(查询表达式,新值，选项)
+	全部替换文档
+	db.xiyouji.update({name:'2dog'},{age:100})
+	修改指定文档
+	db.xiyouji.update({age:100},{$set:{age:1000}})
+	删除某个属性
+	db.xiyouji.update({age:18},{$unset:{age:18}})
+	重命名
+	db.xiyouji.update({age:1000},{$rename:{'age':'nianling'}})
+	列增长
+	db.xiyouji.update({nianling:1099},{$inc:{nianling:-199}})
+	修改多行数据
+	注意：修改如果找到匹配的行只修改1行，如果需要修改多行，使用multi选项
+	db.xiyouji.update({name:'soga'},{$set:{name:'666'}},{multi:true})
+
+
+
 
 		
 
