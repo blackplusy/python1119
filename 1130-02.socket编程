@@ -53,7 +53,7 @@ while True:
         print('welcome to honor！')
         #conn代表客户端和服务端建立连接的通信链路
         conn,addr=sk.accept()
-        #accpet达标阻塞方式，没有收到连接请求就不会向下>执行
+        #accpet代表阻塞方式，没有收到连接请求就不会向下>执行
         client_data=conn.recv(1024)
         print(client_data)
         #回复消息
