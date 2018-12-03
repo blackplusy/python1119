@@ -1,0 +1,71 @@
+一、HTML是什么?
+	Hyper Text Markup Language
+	超链接文本标识语言
+	记事本 webstrom  sublime  hbuilder
+二、HTML特点
+	1、不编译,边解释，边执行
+	2、标识语言
+	3、结构简单，
+三、html发展:HTML5(兼容性)对苹果100%兼容ie 6 7 8
+三、HTML标签
+	1、html基本结构	
+		网页文件扩展名是html或htm
+		记事本：文件另存为------->文件类型换成"所有",敲入文件名即可
+		所有网站默认第一个页面都是index.html，编码格式定为utf8
+		包含一对html标签，里面标识成对出现
+		以下出现的符号全部英文半角
+		<html>
+				<head>头部
+					<title>我的网站</title>
+				</head>
+				<body>正文
+				</body>
+		</html>
+		标题的标识:
+			<h1>-----<h6>
+			<img 是html单标签之一 src="图片名称"
+			所有的html标签都可以定义width height,任何大小不用写单位
+			换行的标签: br 单标签
+			<center></center>居中
+			路径:相对路径:相对于网页位置的一个路径(相对于网页的地址)
+				退出一级用..
+				绝对路径:哪一个盘哪一个目录哪一个文件（详细地址)
+			文字需要字体设置 
+			<font  face="字体"“”
+			字体在C:\Windows\Fonts目录里面
+			color颜色,颜色单词   lightred浅 darkred深 
+			rgb形式
+			#990000
+			size  0,1,2,3,4,5,6,7
+			分隔线 hr
+			a标签，href="网页路径"
+			绝对地址
+			http://www.baidu.com/aa.html
+			http://www.baidu.com/a.jpg
+			b加粗
+			i 倾斜
+			U下划线【】
+			列表
+			有序列表
+			ol li
+			type有五个标志:1  A  a  i   I
+			start起始的数值是
+			无序列表
+			 ul li
+			type值决定无序列表前面的那个符号的样式
+			type="squre"方块
+			type="circle"空心圆
+			默认是实心圆
+注册页面：
+			单选框：圆圈可以点击之后加点<input type="radio"
+			多选框:  方框可以选择<input type="checkbox"
+			选择：下拉列表<select>包含有<option>
+			文本框:<input type="text"
+			密码框:<input type="password"
+			按钮<button
+元素标签:
+		统治一行:块状元素
+			标题 <h1>-<h6>   hr (无序列表)ul li (有序列表) ol li  center  br
+		不统治一行:行内元素
+			a链接  img图片  input  &nbsp b i u font (face color size)
+		
