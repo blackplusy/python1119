@@ -80,4 +80,24 @@ HTML全称  超文本标识语言
 			colspan
 		表格布局就是标准的表格结合行跨度和列跨度实现 
 		
-			
+		html标签
+			background属性,背景
+			bgcolor背景色
+			bgsound背景音乐
+框架集
+	frameset
+   框架 frame
+作用:实现了网页的局部刷新
+ 要点:
+		1、frameset定义在head和body外面
+		2、frameset上下分用cols rows来组织的
+		3、frameset里面的frame加name= ，最终的name就是做的a链接的target值
+			<a href="网页地址" target="right"right就是frameset里面frame的名字
+			target是a链接点击后显示页面的地址，target="blank"表示浏览器另外开启一个标签去显示网页,target=frame的名字的话，在对应的frame里面去显示网页
+html四大项:
+		标签(块状和行内)
+		表格布局(table tr td colspan rowspan)
+		表单(15个元素)
+		无序列表和有序列表
+		框架集(了解）
+		DIV+CSS布局(重点，难点）
