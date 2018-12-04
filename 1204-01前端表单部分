@@ -29,6 +29,7 @@ HTML全称  超文本标识语言
 		form标签，form标签专门对表单内的input元素进行管理
 		提交到哪里:<form action="abc.html">
 		select 下拉列表
+			option  selected被选中的是哪一个元素
 		多行文本框 textarea  cols=列    rows=行
 		****表单数据能够接收
 			1、表单元素必须被form包含 
@@ -40,3 +41,43 @@ HTML全称  超文本标识语言
 		form  method提交时的方法
 				get form表单提交的默认情况  明文发送（不加密)  发送有大小限制（文字)
 				post  提交信息不会明文显示，暗文发送，同时加密   没有大小限制(视频，图片）
+		type="reset"重置(清除填写过的信息)
+		   原来的设置(checked,placeholder)不会清除掉
+			placehoder是文本框具有,给文本框加了一句体验化注释
+		type="hidden"隐藏框,作用:把用户不需要看到，需要提交到服务器的信息隐藏掉
+		以上input都是html4
+		html5提供了新的input标签
+		<input  type="file">文件上传的按钮
+		<input  type="range">滑动块
+		<input  type="color">颜色
+		<input  type="email">邮箱
+		<input  type="url">网站
+总结
+		10个html4 5个html5的
+		属性
+			name value共有 name必须要有 radio checkbox必须value
+			个别的属性
+			placeholder文件框  提示文本
+			checked用在radio checkbox 值 checked
+			selected 用在select option上 ,表示被选中的选项 
+		
+表格布局：
+		布局:html元素合理放在一起
+		一、html表格是如何产生的:
+			<table> border表示的表格线 border=1
+			</table>设定了一个表格
+			<tr>表行
+			<td>表列,表元，单元格  
+		没有内容的表格是缩略图
+		第一行表格<td>的width会影响到其它行同列的表格width
+		以上是中规中矩的表格
+		行跨度
+			表格中某个单元格高度是基本单元格整数倍
+			单元格的从属属于上面那一行
+			rowspan=值
+		列跨度
+			表格中某个单元格长度是基本单元格整数倍
+			colspan
+		表格布局就是标准的表格结合行跨度和列跨度实现 
+		
+			
