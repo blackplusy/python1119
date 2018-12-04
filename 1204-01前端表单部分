@@ -1,0 +1,42 @@
+前端第二课
+HTML全称  超文本标识语言
+标签分为两部分:
+块状元素
+		h1-------h6标题
+		ul li 无序列表
+		ol li 有序列表
+		center居中
+		br换行
+		hr水平线
+行内元素:
+		a链接
+		img图片
+		u下划线
+		i倾斜
+		b加粗
+		<font>字体
+		input
+			type="text" 文本框
+			type="password"密码框
+			type="radio"单选框
+			type="checkbox"复选框
+			 设置属性checked="checked"，表示被选中的意思
+			type="button"  value="按钮上的文字"
+		所有的input都有value属性
+		提交按钮，带提交动作 type="submit"
+			作用:带name属性的input元素，把它的value值提交上去的
+		button按钮：必须双标签，同时按钮上文字在双标签中间
+		form标签，form标签专门对表单内的input元素进行管理
+		提交到哪里:<form action="abc.html">
+		select 下拉列表
+		多行文本框 textarea  cols=列    rows=行
+		****表单数据能够接收
+			1、表单元素必须被form包含 
+			2、form必须有action="提交的地址"
+			3  form包含的元素必须有name属性
+			4  form里面单选框，复选框必须有value
+			5 单选框和复选框都有相同的名字
+		以上内容设置后，提交的内容全部显示在地址栏,这有不安全的因素
+		form  method提交时的方法
+				get form表单提交的默认情况  明文发送（不加密)  发送有大小限制（文字)
+				post  提交信息不会明文显示，暗文发送，同时加密   没有大小限制(视频，图片）
