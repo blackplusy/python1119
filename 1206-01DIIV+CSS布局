@@ -1,0 +1,75 @@
+前端4
+DIV+CSS布局
+	div html标签,盒子(没有宽和高)
+	html网页布局形象理解成盒子
+	盒子要素:(四要素，六要素)
+		外边距 :两个盒子之间的距离 margin
+		内边距 :盒子里面的填充物 padding
+		内容:盒子里面的元素 content
+		边框:盒子的边 border
+		宽 width
+		高 height
+		div是html块状元素
+		margin后的边距从上边距开始，顺时针旋转
+			上  右  下  左
+		如果限制所有元素的margin,padding,采用通配符*
+			margin跟四个参数: 上   右   下  左
+			margin跟三个参数:上   左右   下
+			margin跟两个参数: 上下    左右
+			margin跟1个参数:上下左右
+		方位单词:
+			top 上  bottom 下   left 左  right 右
+		padding的作用跟margin相同，	
+div+css布局的思路
+	1、划分盒子 
+			如果整体居中，最外层有一个大盒子
+			里面明显分成几个盒子，
+		2、确定div,装元素
+			遇到层次相同的并列元素,用无序列表
+		3、定义样式表:
+				（1）特殊样式写上：
+							*{
+								padding:0;
+								margin:0 auto;
+								}
+							a{
+								text-decoration:none;
+							}
+							ul{
+								list-style:none;
+							}
+						ul li{
+							float:left;
+						}
+							ul css去圆点 list-style:none
+							把块状元素变成行内元素:
+							浮动:左浮动 float:left  右浮动:float:right
+			注意的点:凡是div设置width,height
+			精灵图,完成一次性的加载
+浮动:float left（1）把块状元素变成行内元素
+				(2)变成行内元素之后，要看外面盒子大小,
+				 外面盒子小，里面小盒子之和大于最外层盒子，就是掉块
+注意:width,height理解成盒子宽度和高度,理解成盒子内容的宽度和高度
+伪类选择器
+html元素的鼠标动作分为4种
+		正常状态 link
+		鼠标经过时 hover
+		鼠标点击时 active
+		鼠标点击后 visited
+写状态: a:hover表示a标签发生鼠标经过
+盒子注意:
+		1、width height必须要有的
+		2、盒子正常自己独占一行，如果需要在一行和谐，float:left
+CSS定位:
+		position:
+			   static  默认 margin-top margin-bottom margin-left margin-right
+				relative相对：不脱离文档流
+				absolute绝对：脱离文档流
+						left top bottom right，盒子模型大小不变.来定义位置 
+						定义成absolute后可以出现层叠现象
+						层次的属性 z-index:9999
+				 做一个盒子的位置	
+				fixed固定
+					
+				inherit继承
+
