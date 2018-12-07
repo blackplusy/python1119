@@ -1,0 +1,132 @@
+div+css布局
+	确定几个盒子
+		（行内元素，块状元素) 左   右
+			左面的内容:float left
+			右边的内容:float right
+			游离的元素:定位
+	最外层的盒子加背景,盒子有自己独有的内容，背景,把这个独有内容的盒子做id选择器,盒子没有宽高,
+		float left以后，盒子margin:0 auto没有作用了
+		position:absolute;纯粹的脱离文档流
+			规则:1、父容器不脱离文档流 relative
+				  2、子容器脱离文档流 absolute
+		做完了内容不随着浏览器大小或者是类型变化而变化，兼容性比较好
+js 基础:
+	1、命名:
+			变量:在程序执行过程中，一直变化的未知数
+			命名规则: 字母 数字 下划线_组成的，第1个字符不能是数字 
+			例不合法变量名:
+				a+b a-b a*b 2a +a
+			合法:
+				 a_b  _ab a2 a2_   ABVCabdce_abc_13
+		1、语句
+			(1)弹出框 alert(数或值)
+			js怎么写:
+				<script></script>代码写在里面 
+			js不要写在<head></head>
+				js会把双引号引起来的原样输出
+				'1+2='+(1+2)
+				‘1+2=’引号里面的内容原样输出
+				(1+2)没有加引号，加括号，可以计算出结果来3
+					'1+2='+3 引号后面的+号是连结的意思，把两个引号里面的内容放在一起'1+2=3',3前面是一个''与它计算，3自动加''
+			(2)确认框: confirm 双引号
+					confirm('你确定此产品吗?')
+					值可以接收,用变量
+					计算机两值的问题:（布尔型）
+					true 确定  正确的 真
+					false 取消  错误的
+			(3)输入框: prompt  双引号
+				用户参与
+			(4)网页输出:document.write
+				document网页
+				write写
+				write可以写html
+					条件： html标签用""引起来,变量不用引号，用"+"把这几个量连结起来就可以了
+				document.write("<h1>"+aa+"</h1>")
+	第一种程序结构:
+			顺序结构程序设计
+				按照程序的思维，一步一步走
+				公式写出来 s = pi * r *r
+				pi=3.14
+				r=prompt('输入一个半径')
+				s=pi*r*r
+				alert(s)
+		计算两个数相加
+			  用户输入两个数，计算机算出两个数之和
+				a=prompt('请输入一个加数')
+				b=prompt('再输入一个加数')
+				c=a+b
+				alert(c)
+			prompt输出的结果是(字符串) 双引号的内容
+			prompt加法变成数字 Number(数字)
+			js区分大小写
+			Number(a)a从字符串变成数值
+		运算:
+			加 +  减 -   乘 *  除法 /  取余数 %
+		js计算整数比较顺利
+		js计算小数不准确(双精度问题)
+			0.1+0.2_>__0.3
+			0.3-0.2__<___0.1
+第二种程序结构:
+		条件： if   如果
+				switch  case
+		if  (条件成立){成立后语句}else{不成立的语句}
+		在判断两个数值是否相等，是==
+		例：让用户猜想1-9之间的一个数字,猜对显示的你猜对了，猜错了显示你猜错了
+
+		(所出的题目中出现比较的问题 if)
+			随机数
+			Math.random()  0  1 随机小数
+			Math.random()*10扩大10倍 y(2)=3
+			Math.floor(Math.random()*10)截取函数，把小数部分全部不要
+
+			Math.round()四舍五入
+			1、产生随机整数0-9
+			2、用户输入一个数
+			3、比较:用户输入数是否等于随机整数,相等输出猜对了,不等猜错了
+			a=prompt('请输入一个0-9整数')
+			b=Math.floor(Math.random()*10)
+			if (a==b){
+					document.write('猜对了')
+			}else{
+					document.write('猜错了!')
+			}
+	获取页面的元素:
+			页面有用户名和密码
+			用程序判断用户输入的用户名和密码是否正确，如果正确就是合法用户，如果错误就是非法用户.
+			首先根据id的值取元素
+			document.getElementById(id的名字)
+			onclick=功能
+			写在<script></script>之间的代码是一进入网页就执行
+			写在onclick=function(){}里面，只有onclick点击才执行的功能。
+		思路:
+			1、根据id获取按钮的元素，给元素加onclick事件.
+				document.getElementById("btn").onclick=function(){
+				}
+			2、把代码写在function(){}里面
+			3、首先先预设自己的用户名和密码
+					user="admin"
+					pass="admin"
+			4、获取用户名的输入和密码的输入框里的值 value
+					users=document.getElementById("u").value用户名
+					passes=document.getElementById("p").value密码
+			5、判断用户名和密码是否相等
+				先比较用户名，再比较密码 
+				if(user==users){
+						if(pass==passes){
+								document.write('合法');
+						}else{
+								document.write('非法')
+						}
+				}else{
+						document.write('非法');
+				}
+练习:
+		1、猜价格:页面上显示一个你设定的物品和价格文本框:
+			后台自己设定一个价格，在价格文本框中用户输入价格，输入大了，显示（‘你猜大了") 输入的值与后台价格小了，显示（你猜小了,如果正好相等，显示“你猜对了”
+		2、制作小型计算器：
+			 在页面上输入两个数，页面有输入两个数的文本框
+			下面有+ - * /四个按钮
+			当点击+,计算两数之和
+			当点击-.计算两数之差 
+			当点击乘，计算两数之积
+			当点击/,计算两数之商
