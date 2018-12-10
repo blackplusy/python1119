@@ -18,7 +18,7 @@ if条件
 		a=document.getElementById(“p”)
 		相当于拿到input标签
 		调用值:
-a.	value获取输入框内的值
+	a.value获取输入框内的值
 linux环境下web搭建:
 	安装一个apache2(web环境程序)
 		apt install apache2
