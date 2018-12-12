@@ -1,0 +1,108 @@
+js数组
+	存储多种类型的一个变量,一个数值的列表
+	a=10 b='a'
+	ab=[1,2,3,true,'abcd']用中括号括起来
+	ab[0]
+	abc=document.getElementsByTagName("li")
+	abc[0] abc[1]
+	引用时候，下标是从0开始
+	方法
+	增   前增加      后增加       中间增
+	    unshift()    push()        splice()
+		如何使用：
+		数组名.unshift(增加的元素)
+		数组名.push(增加的元素）
+	中间增:数组名.splice(索引的位置，删除元素的个数，增加的元素)
+		a.splice(3,0,4,5,6)把a元素从索引3的位置中删除0个元素，增加元素 4,5,6
+		a.splice(2,4,'a','b','c')把a元素从索引2的位置中删除4个元素，增加元素 'a','b','c'
+			
+	删  前删	后删		中间删
+	   shift()     pop()    	splice
+		如何使用:
+		除了splice不用向（）定义参数
+			数组名 .shift()在前面删除了一个元素
+			数组名.pop()删除最后一个元素
+			数组名.splice(索引值，删除几项)
+
+	改
+		a[1]]=30
+		数组名[索引下标]=值
+
+	查
+		indexOf lastIndexOf
+		正向查询  反向查询
+		正向查询指从左向右找到的第一个符合查询条件的元素
+		反向查询指从右向左找到的第一个符合查询条件的元素
+		indexOf和lastIndexOf出现的结果是一致的，表示是当前查找的元素或者没有或者有且只有一个.
+		如果元素在数组中没有，查询出来的结果是-1
+
+
+	其它
+		reverse数组反向
+		把数组中的元素反向输出
+		用法:
+			数组名.reverse()
+		把数组转成字符串
+			join
+			join()空默认是,
+			join("")把字符串连接在一起
+			join("-")如果join里面跟了一个符号，用符号连结数组中所有的元素形成的字符串
+		把字符串转成数组:
+			split
+			split()空默认是把整个串做为一个元素放到数组,
+			split("")把字符串按字符个数一个一个放在数组中
+			split("d")如果split里面跟了一个值，用这个值去切分字符串
+		concat把两个数组连结在一起
+		slice从某一个索引位置产生一个子数组
+js基本数据类型
+	Number数值   Boolean 布尔  String 字符串  null空值  undefined未定义  Array数组 Object对象
+js内置对象
+	Math数学
+		Math.random()随机数
+		Math.floor()向下截取 Math.floor(3.4)=3  Math.floor(-3.4)=-4
+		Math.ceil()向上截取Math.ceil(3.4)=4    Math.ceil(-3.4)=-3
+		Math.round()四舍五入
+		Math.sqrt() 开方
+		Math.sum()求和
+		Math.average()求平均数
+	window对象
+		open()
+			
+		close
+	
+		window.close()只能关闭window.open()出来的窗口，窗口是a链接出来的，一般关闭不了
+
+	location对象
+		地址栏 
+		获取地址:location.href
+		改变地址的链接:location.href="地址"
+	history对象
+		history.forward()前进一页
+		history.back()后退一页
+		history.go()前进或者后退，前进几步，后退几步，前进go是正值，后退go是负值
+		history.go(-3)前进3步
+	navigagor导航对象
+		userAgent表示用户访问的平台信息和浏览器相关信息
+		判断用户使用的pc还是手机，手机是苹果还是android
+		if userAgent.indexOf("Android")==true  Android手机
+		if userAgent.indexOf("IOS")==true    苹果手机
+		if userAgent.indexOf("IPhone")==true  苹果平板ipad
+javascript方法:
+	onclick点击事件
+	onmousemove鼠标移动
+	onmouseover鼠标经过了本元素
+	onmouseout鼠标离开了本元素
+	onmousedown鼠标按下
+	onmouseup鼠标抬起
+	onkeydown键盘按下
+	onblur失去焦点(焦点理解成操作的对象 ）
+	onfocus获取焦点
+	常用在文本框上的事件:onblur onfocus
+js:
+	面向对象
+	canvas
+	
+
+	
+	
+	
