@@ -101,8 +101,61 @@ javascript方法:
 js:
 	面向对象
 	canvas
+	ES6
+轮播
+	setTimeout排队2秒 等待时间不会2秒
+	setInterval
+ 	自动走setTimeout
+	新的setTimeout，旧的setTimeout停止 clearTimeout
+前端与后端通信的技术:
+	AJAX
+	Asynchronous JavaScript and XML(异步)
+	功能 :1、异步 2、局部刷新
+	XML和HTML
+		XML里面的标签是自己定义
+		HTML标签系统提供的
+		xml文档:
+			<?xml version=1.0 ?>
+			<books>
+				<book>
+					<name>书名</name>
+					<author>作者</author>
+				<book>
+				<book>
+					<name>书名2</name>
+					<author>作者2</author>
+				<book>
+			</books>
+	网络提供的数据格式两种:XML   json(字典)b={'a':'book','b':'name'}键:值  b['a']
+	原生的ajax写法:
+		对象 ：XMLHttpReqeust (xhr)
+		步骤 ：
+			1、xhr=new XMLHttpRequest()
+			2、xhr.open('GET','请求的地址',true)true是异步，打开这个地址
+			3、xhr.send()发送这个地址
+			4、xhr.onreadystatechange=function(){
+					if (xhr.status==200 && xhr.readyState==4){
+						结果在xhr.responseText里面
+					}
+				}
+	
+	jquery框架
+		$.ajax({
+			url:"请求地址",
+			type:'请求'(GET或POST),
+			dataType:返回值的类型，一般都是xml json text ,
+			success:成功的结果function(data){
+					结果在data里 
+			},
+			error:function(err){
+				失败的结果，结果在error里
+			}
+		})
+		模拟请求地址:https://api.douban.com/v2/book/isbn/9787115253699豆瓣书
+		网页如果想获取不是本网站的数据，不允许跨站请求，报错:
+		已拦截跨源请求：同源策略禁止读取位于 https://api.douban.com/v2/book/isbn/9787115253699 的远程资源。（原因：CORS 头缺少 'Access-Control-Allow-Origin'）。[详细了解]
+		想跨站请求，跨域访问:jsonp
+		
 	
 
-	
-	
 	
