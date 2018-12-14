@@ -2,8 +2,10 @@ vue.js
 面向组件开发的框架
 环境 node.js
 	apt install nodejs
-	apt install node-legency
+	apt install node-leacy
 自动的软件包: npm -v
+如果发现版本过低,执行装n模块 npm intall -g n
+用n模块升级node.js，执行n stable
 npm node模块管理包
 Vue脚手架
 	npm install -g vue-cli
