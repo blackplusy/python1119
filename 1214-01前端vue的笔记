@@ -1,0 +1,81 @@
+vue.js
+面向组件开发的框架
+环境 node.js
+	apt install nodejs
+	apt install node-legency
+自动的软件包: npm -v
+npm node模块管理包
+Vue脚手架
+	npm install -g vue-cli
+中国自动软件管理包
+	npm install cnpm
+	cnpm
+产生vue项目
+	vue init webpack +项目名称
+	vue init webpack mydemo
+
+	创建项目时，第6,7,8选择no,其它y或者直接回车
+	cd 项目名称
+	npm run dev执行vue的项目
+vue工具:webstrom sublime  HBuiler
+重要文件:
+	第一文件:package.json
+	第二文件:App.vue入口文件
+	vue文件的扩展名:.vue
+	vue文件分成三个部分:
+		<template><template>html代码的部分
+		<script></script>js脚本的部分
+		<style></style>css的部分
+		<script>里面必须写export default{
+		}
+		意思：导出这个组件,
+	
+	第三个文件:文件夹:components
+	第四个文件：文件夹:assets指的素材(图片，视频，音频)	
+	第五个文件:router文件夹下 index.js，路由(切换移动端的内容页面,在路由文件做地址和页面的对应关系)
+vue链接 <router-link to="">链接的文本</router-link> to=“”中间跟的是链接的地址，地址要写的router的path名字
+循环和条件
+	<v-if条件
+	<v-for循环
+v-for的操作
+	data () {
+    		return {
+      			msg: 'Welcome to Your Vue.js App'
+    		}
+  	}
+	变量值写到data(){}里面的return,输出变量就在<template><h3>{{SK}} {{}}两个大括号输出变量
+	script里面的data（）是数据的业源，可以在这data()写变量
+	v-for="ss in arr"表示arr的里面的所有元素 ss是数组里面的结果
+	v-if="变量名"变量名是布尔型，布尔型控制元素的条件，根据条件决定元素是否显示
+组件式开发:
+	点开目录 src components
+	右键，新建一个vue组件
+	把原页面html部分放在template里面
+	把css部分放到<style>里面  把灰色的删除
+	路由:改index.js，设置path ，component:组件的名字，（import 导入组件)import Header from '../components/Header.vue'
+	访问时候：http://localhost:8081/#/header
+	vue要求template里面必须有一个盒子,vue要求外层只有一个div
+	加控件
+		<template>加<div></div>
+		在div加上组件，几个组件都可以
+		加完组件后，在export default{
+				components:{
+					把组件的名称写进去
+					,不同的组件用,隔开
+				}
+		}
+		在export上面导入组件,import 组件名 from './文件名'
+	v-if必须data(){return {}}设置一个为true,为false变量，用v-if="变量名"
+	v-for="ss in slist" 这里slit是data(){return {}} 里面列表名字
+	变量输出{{}}
+	vue-router怎么用
+		在router.js写路由规则：path,component
+		<router-link to="path的地址“>作链接
+
+
+	
+
+	
+	
+	
+
