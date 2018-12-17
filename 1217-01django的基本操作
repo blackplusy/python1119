@@ -84,7 +84,7 @@ django第一课
 		先把urls.py建立一个地址的映射（地址与方法的对应关系)
 		项目文件夹里:myjango
 		vi urls.py里面加一句:类似于
-		url('user/',views.index),当用户使用user/地址时，会从view.py找index方法，
+		url('user/',views.index),当用户使用user/地址时，会从views.py找index方法，
 		执行index方法里面的语句
 		导包:
 			from django.conf.urls import url
