@@ -1,0 +1,55 @@
+django第三课
+	一、前端做好的页面，拷贝到templates只有html网页，其它的文件拷贝无效果
+	二、设置 css 、js、image等网页中需要的文件或图片是属于静态资源，放在专门的文件夹中,文件夹是static,
+	settings.py里面设置一下static的指向路径 
+		STATIC_URL='/static/'静态文件的前缀
+		STATICFILES_DIRS=[静态文件的路径
+			os.path.join(BASE_DIR,'static')
+		]
+	三、密码
+		数据库存储以密码的方式存储
+		内置md5加密
+		64位
+		加密需要的库hashlib(通过哈希表的方法的加密）
+		from hashlib import md5
+		str="123456"
+		解码:decode(str,'utf8)把str按utf8的形式进行解码
+		编码:encode(str,'utf8')把str编成utf8
+	四、为django创建的用户
+		python3 manage.py createsuperuser
+	五、两次密码验证:
+		1、在templates里，把 input加name
+		2、回到应用文件夹，views.py
+		3、views.py逻辑:
+			获取request.POST.get前端再次输入密码的文本框内容 
+			获取前端密码框的内容
+			把密码框内容和再次输入密码框对比，相等注册成功，不相等失败
+			if password==repassword:
+				return HttpResponse('成功')
+			else:
+				return HttpResponse('失败')
+	六、单用户
+		1、获取前端文本框的内容 
+		2、再获取用户输入的用户名的数据库记录
+		3、如果取出是有内容，已注册，没有内容 ，未注册
+			注意:User.objects.get(username=username)
+				如果数据库中有多个username会报错，
+				如果数据库中没有username也报错
+			1、用报错特点来判断一下数据库中是否有用户;
+				try：
+					us=User.objects.get(username=username)
+					return HttpResponse('已有用户')'
+				except:
+					return HttpResponse('成功注册')
+			2、不用报错的特点:
+				用get只能报错
+				用filter过滤，过滤的结果是一个集合
+				如果想输出filter里面是什么内容
+				User.objects.values()
+	七、下午:
+		1、注册成功，回到登录页面
+		2、登录成功，做一个登录成功的页面
+		3、汉译英 ：
+		
+				
+			
