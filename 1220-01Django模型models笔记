@@ -1,0 +1,136 @@
+models
+ORM关系模型
+IntegerField（）整型,默认长度为11
+DateTimeField()日期时间型
+	auto_now=True表示可以使用当前时间，当前时间会自动加上
+DateField()日期型 
+TimeField()时间型
+BooleanField()只有两种选择的时候
+default=True表示不输入默认是什么内容 
+ImageField表示图片字段,upload_to参数表示上传的地址,
+这个地址'/'表示项目目录
+EmailField()邮箱 
+DecimalField()小数
+	max_digits表示小数整个位数
+	decimal_places表示小数部分有几位
+FileField()文件字段
+	upload_to
+利用django提供的上传平台来上传内容 
+建用户
+	python3 manage.py createsuperuser
+访问平台
+	http://localhost:8000/admin
+平台转中文
+	settings.py
+		LANGUAGE_CODE='zh-hans'
+	时区:
+		TIME_ZONE = 'Asia/Shanghai'
+在应用文件夹下，有一个admin.py文件
+		编辑admin.py
+			from .models import Info
+			
+			admin.site.register(Info)
+命令符的方式练习models
+	在项目目录下
+	python3 manage.py shell
+	（1）显示数据库所有的记录
+		Info.objects.all()
+	(2)显示数据库里面所有记录的值
+		Info.objects.values
+	(3)取id=1记录
+		Info.objects.get(pk=1)
+		Info.objects.get(pk=1).username
+	(4)filter name='张三'
+		Info.objects.filter(username='张三').values()     
+	（5）查姓张的记录
+		Info.objects.filter(username__startswith='张').values
+		startswith表示开头的第一个字符是什么 endswith最后一个字符是什么
+		username是字段   格式:字段__(两个下划线)startswith,endswith
+		查询时只要涉及到字段的相关条件，都是字段__（注意：两个下划线)条件
+		中间:contains
+		Info.objects.filter(email__contains='163.com').values()
+		查询所有邮箱包含163.com的记录
+	(6)查数值
+		大于gt  小于lt  大于等于gte 小于等于 lte
+		
+		查年龄>25的人的记录
+			Info.objects.filter(age__gt=25).values()    
+		查询 25-27之间的年龄的人 	
+			filter里面两个条件
+			Info.objects.filter(age__gt=25,age__lt=27).values()
+			表示的是两个条件都满足
+		查询小于 25或者大于27之间的  条件：满足其中一个
+			exclude()除外 
+			Info.objects.exclude(age__gte=25,age__lte=27).values
+	(7）汇总
+		Min 最小  Max最大， Sum和  Avg平均数
+		以上四个导包 from  django.db.models import *
+		aggregate
+		以下求平均年龄
+			Info.objects.aggrate(Avg(age))
+	(8)分组
+		所有全是id的表格，都是django自动产生的
+		    class Meta:
+        		db_table='publisher'
+			django产生新表的时候，表名叫publisher,
+		#出版社的表
+		class Publisher(models.Model):
+    			name=models.CharField(max_length=20)
+    			addr=models.CharField(max_length=20)
+    			class Meta:
+        			db_table='publisher'
+		#书表
+		class Book(models.Model):
+    			title=models.CharField(max_length=20)
+    			price=models.DecimalField(max_digits=6,decimal_places=2)
+    			publish_day=models.DateField()
+    			class Meta:
+        			db_table='book'
+		#作者表
+		class Author(models.Model):
+    			name=models.CharField(max_length=20)
+    			class Meta:
+        			db_table='author'
+		#作者的详细信息
+		class AuthorDetail(models.Model):
+    			addr=models.CharField(max_length=20)
+    			class Meta:
+        			db_table='author_detail'
+		作者和信息之间是一对一
+		作者和书是多对多
+		出版社和书是一对多
+		django里面一对一 OneToOneField
+		多对多  ManyToManyField
+		一对多 ForeignKey(多的那个表里)
+		写的哪里参见代码
+		django的任何一个类中出现了外键，一对一，多对多这类关系的时候，它所对应的类可以找到这个类，这个类也能找到对应的类
+		book   author(外键)
+		book__author(可以book里找author)两个表之间加下划线
+		author__book(在author里找book)
+		django会自动为每个类产生一个小写字母的关联, 
+		class Book,    book小表
+		统计每一本书的作者个数
+			django不能按某个字段，默认按某个类的id分组  
+			分组命令:annotate
+			1、考虑按什么分组，按什么分组什么就是主体类
+				Book.objects.annotate
+				只能按bookid进行分组,(分组的id取决于objects前的类)
+				求个数的统计函数Count
+				Book.objects.annotate(c=Count('author')).values('title','c') 
+		一个作者写了几本书
+				Author.objects.annotate(c=Count('book')).values('name','c')
+		统计每个出版社买的最便宜的书的价格
+			按每个出版社来找，分组的是出版社
+			Publisher.objects.annotate(mins=Min('book__price')).values('name','mins')
+			book__price指的book里面的price字段（publisher可以找到book,book要找book里的字段，就把book加两个下划线，写上字段就可以了)
+		统计不止一个作者的图书
+		这句按什么分组 
+			Book.objects.annotate(c=Count('author')).filter(c__gt=1).values('title','c')
+		根据一本图书作者数量多少排序
+			order_by排序
+			Book.objects.annotate(c=Count('author')).order_by('c').values('title','c') 升序
+  			Book.objects.annotate(c=Count('author')).order_by('-c').values('title','c') 降序
+
+		
+		
+	
