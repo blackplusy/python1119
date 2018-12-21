@@ -1,0 +1,243 @@
+zelin@zelin-HP-EliteBook-8440p:~$ sudo -i
+[sudo] zelin 的密码： 
+root@zelin-HP-EliteBook-8440p:~# cd ..
+root@zelin-HP-EliteBook-8440p:/# cd home
+root@zelin-HP-EliteBook-8440p:/home# cd zelin
+root@zelin-HP-EliteBook-8440p:/home/zelin# ls
+ajax                 myvue         例子1211-01循环和定时器代码.tar.gz
+data.csv             myyao         例子-1212-01window及常用对象源码.tar.gz
+demo                 node_modules  例子-1212-02数组常用方法源码.tar.gz
+dlib-19.16.0         pandas        例子-1212-03ajax原生和jquery异步加载.tar.gz
+dlib-19.16.0.tar.gz  pycharm       例子-1212-04修改后的轮播.tar.gz
+examples.desktop     shuju         例子-1213-01jquery 示例代码.tar.gz
+fen                  shuzhu        例子-1213-02 bootstrap凤凰社案例 .tar.gz
+gongzi.ods           Take-out      例子-1214-01vue案例.tar.gz
+jquery               Take_out.sql  例子-1214-02vue修改组件素材.tar.gz
+ke6                  test          例子1218-01登录注册简单逻辑.tar.gz
+ke7                  test1         例子-1219-01药房网素材.tar.gz
+ke7.tar.gz           testboot      例子-1219-02药房网登录注册源码.tar.gz
+ke8                  testdemo      模板
+ke8.tar.gz           test_gu       视频
+lunbo                testtitanic   图片
+mydemo               timg.jpeg     未命名.ipynb
+myjango              titanic       未命名文件夹
+mylogin              webstorm      文档
+mymodel              wenjian       下载
+mypandas             window        演示
+mypro                yaofang       音乐
+myss1                公共的        桌面
+root@zelin-HP-EliteBook-8440p:/home/zelin# cd mymodel
+root@zelin-HP-EliteBook-8440p:/home/zelin/mymodel# 
+root@zelin-HP-EliteBook-8440p:/home/zelin/mymodel# python3 manage.py makemigrations
+Migrations for 'testmodel':
+  testmodel/migrations/0003_book_hot.py
+    - Add field hot to book
+root@zelin-HP-EliteBook-8440p:/home/zelin/mymodel# python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, testmodel
+Running migrations:
+  Applying testmodel.0003_book_hot... OK
+root@zelin-HP-EliteBook-8440p:/home/zelin/mymodel# python3 manage.py shell
+Python 3.5.2 (default, Nov 12 2018, 13:43:14) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.1.1 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from testmodel.models import *                                          
+
+In [2]: from django.db.models impot *                                           
+  File "<ipython-input-2-23994fa2f8c8>", line 1
+    from django.db.models impot *
+                              ^
+SyntaxError: invalid syntax
+
+
+In [3]: from django.db.models import *                                          
+
+In [4]: Book.objects.all()                                                      
+Out[4]: <QuerySet [<Book: Book object (1)>, <Book: Book object (2)>, <Book: Book object (3)>, <Book: Book object (4)>, <Book: Book object (5)>, <Book: Book object (6)>]>
+
+In [5]: Book.objects.values()                                                   
+Out[5]: <QuerySet [{'hot': Decimal('30.33'), 'title': '书一', 'publisher_id': 1, 'price': Decimal('141.12'), 'id': 1, 'publish_day': datetime.date(2017, 1, 18)}, {'hot': Decimal('30.33'), 'title': '书二', 'publisher_id': 1, 'price': Decimal('263.33'), 'id': 2, 'publish_day': datetime.date(2018, 1, 19)}, {'hot': Decimal('30.33'), 'title': '书三', 'publisher_id': 3, 'price': Decimal('486.00'), 'id': 3, 'publish_day': datetime.date(2018, 1, 25)}, {'hot': Decimal('30.33'), 'title': '书四', 'publisher_id': 2, 'price': Decimal('264.00'), 'id': 4, 'publish_day': datetime.date(2018, 1, 11)}, {'hot': Decimal('30.33'), 'title': '书五', 'publisher_id': 4, 'price': Decimal('815.00'), 'id': 5, 'publish_day': datetime.date(2018, 1, 29)}, {'hot': Decimal('30.33'), 'title': '书六', 'publisher_id': 2, 'price': Decimal('42.00'), 'id': 6, 'publish_day': datetime.date(2018, 4, 12)}]>
+
+In [6]: Book.objects.filter(price__lt=F('hot'))                                 
+Out[6]: <QuerySet []>
+
+In [7]: Book.objects.update(hot=F('hot')+100)                                   
+Out[7]: 6
+
+In [8]: Book.objects.values()                                                   
+Out[8]: <QuerySet [{'hot': Decimal('130.33'), 'title': '书一', 'publisher_id': 1, 'price': Decimal('141.12'), 'id': 1, 'publish_day': datetime.date(2017, 1, 18)}, {'hot': Decimal('130.33'), 'title': '书二', 'publisher_id': 1, 'price': Decimal('263.33'), 'id': 2, 'publish_day': datetime.date(2018, 1, 19)}, {'hot': Decimal('130.33'), 'title': '书三', 'publisher_id': 3, 'price': Decimal('486.00'), 'id': 3, 'publish_day': datetime.date(2018, 1, 25)}, {'hot': Decimal('130.33'), 'title': '书四', 'publisher_id': 2, 'price': Decimal('264.00'), 'id': 4, 'publish_day': datetime.date(2018, 1, 11)}, {'hot': Decimal('130.33'), 'title': '书五', 'publisher_id': 4, 'price': Decimal('815.00'), 'id': 5, 'publish_day': datetime.date(2018, 1, 29)}, {'hot': Decimal('130.33'), 'title': '书六', 'publisher_id': 2, 'price': Decimal('42.00'), 'id': 6, 'publish_day': datetime.date(2018, 4, 12)}]>
+
+In [9]: Book.objects.filter(price__lt=F('hot'))                                 
+Out[9]: <QuerySet [<Book: Book object (6)>]>
+
+In [10]: Book.objects.filter(price__lt=F('hot')).values()                       
+Out[10]: <QuerySet [{'hot': Decimal('130.33'), 'title': '书六', 'publisher_id': 2, 'price': Decimal('42.00'), 'id': 6, 'publish_day': datetime.date(2018, 4, 12)}]>
+
+In [11]: Book.objects.filter(pk=1,pk=3).values()                                
+  File "<ipython-input-11-5e0a8842447c>", line 1
+    Book.objects.filter(pk=1,pk=3).values()
+                            ^
+SyntaxError: keyword argument repeated
+
+
+In [12]: Book.objects.filter(Q(pk=1)|Q(pk=3)).values()                          
+Out[12]: <QuerySet [{'hot': Decimal('130.33'), 'title': '书一', 'publisher_id': 1, 'price': Decimal('141.12'), 'id': 1, 'publish_day': datetime.date(2017, 1, 18)}, {'hot': Decimal('130.33'), 'title': '书三', 'publisher_id': 3, 'price': Decimal('486.00'), 'id': 3, 'publish_day': datetime.date(2018, 1, 25)}]>
+
+In [13]: quit()                                                                 
+root@zelin-HP-EliteBook-8440p:/home/zelin/mymodel# ls
+manage.py  media  mymodel  testmodel
+root@zelin-HP-EliteBook-8440p:/home/zelin/mymodel# python3 manage.py makemigrations
+Migrations for 'testmodel':
+  testmodel/migrations/0004_book_isdelete.py
+    - Add field isDelete to book
+root@zelin-HP-EliteBook-8440p:/home/zelin/mymodel# python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, testmodel
+Running migrations:
+  Applying testmodel.0004_book_isdelete... OK
+root@zelin-HP-EliteBook-8440p:/home/zelin/mymodel# python3 manage.py shell
+Python 3.5.2 (default, Nov 12 2018, 13:43:14) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.1.1 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from testmodel.models import *                                          
+
+In [2]: from django.db.models. import *                                         
+  File "<ipython-input-2-cf688cb9469a>", line 1
+    from django.db.models. import *
+                                ^
+SyntaxError: invalid syntax
+
+
+In [3]: from django.db.models import *                                          
+
+In [4]: Book.objects.values()                                                   
+Out[4]: <QuerySet [{'hot': Decimal('130.33'), 'title': '书一', 'publisher_id': 1, 'publish_day': datetime.date(2017, 1, 18), 'price': Decimal('141.12'), 'isDelete': False, 'id': 1}, {'hot': Decimal('130.33'), 'title': '书二', 'publisher_id': 1, 'publish_day': datetime.date(2018, 1, 19), 'price': Decimal('263.33'), 'isDelete': False, 'id': 2}, {'hot': Decimal('130.33'), 'title': '书三', 'publisher_id': 3, 'publish_day': datetime.date(2018, 1, 25), 'price': Decimal('486.00'), 'isDelete': False, 'id': 3}, {'hot': Decimal('130.33'), 'title': '书四', 'publisher_id': 2, 'publish_day': datetime.date(2018, 1, 11), 'price': Decimal('264.00'), 'isDelete': False, 'id': 4}, {'hot': Decimal('130.33'), 'title': '书五', 'publisher_id': 4, 'publish_day': datetime.date(2018, 1, 29), 'price': Decimal('815.00'), 'isDelete': False, 'id': 5}, {'hot': Decimal('130.33'), 'title': '书六', 'publisher_id': 2, 'publish_day': datetime.date(2018, 4, 12), 'price': Decimal('42.00'), 'isDelete': False, 'id': 6}]>
+
+In [5]: Book.objects.filter(pk__gt=3).update(isDelete=True)                     
+Out[5]: 3
+
+In [6]: Book.objects.values()                                                   
+Out[6]: <QuerySet [{'hot': Decimal('130.33'), 'title': '书一', 'publisher_id': 1, 'publish_day': datetime.date(2017, 1, 18), 'price': Decimal('141.12'), 'isDelete': False, 'id': 1}, {'hot': Decimal('130.33'), 'title': '书二', 'publisher_id': 1, 'publish_day': datetime.date(2018, 1, 19), 'price': Decimal('263.33'), 'isDelete': False, 'id': 2}, {'hot': Decimal('130.33'), 'title': '书三', 'publisher_id': 3, 'publish_day': datetime.date(2018, 1, 25), 'price': Decimal('486.00'), 'isDelete': False, 'id': 3}, {'hot': Decimal('130.33'), 'title': '书四', 'publisher_id': 2, 'publish_day': datetime.date(2018, 1, 11), 'price': Decimal('264.00'), 'isDelete': True, 'id': 4}, {'hot': Decimal('130.33'), 'title': '书五', 'publisher_id': 4, 'publish_day': datetime.date(2018, 1, 29), 'price': Decimal('815.00'), 'isDelete': True, 'id': 5}, {'hot': Decimal('130.33'), 'title': '书六', 'publisher_id': 2, 'publish_day': datetime.date(2018, 4, 12), 'price': Decimal('42.00'), 'isDelete': True, 'id': 6}]>
+
+In [7]: Book.objects.aggreate(ca=Count('title',filter=Q(isDelete=True)),cb=Count
+   ...: ('title',filter=Q(isDelete=False)))                                     
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-7-314fd6518a8b> in <module>
+----> 1 Book.objects.aggreate(ca=Count('title',filter=Q(isDelete=True)),cb=Count('title',filter=Q(isDelete=False)))
+
+AttributeError: 'Manager' object has no attribute 'aggreate'
+
+In [8]: Book.objects.aggregate(ca=Count('title',filter=Q(isDelete=True)),cb=Coun
+   ...: t('title',filter=Q(isDelete=False)))                                    
+/usr/local/lib/python3.5/dist-packages/pymysql/cursors.py:170: Warning: (1292, "Truncated incorrect INTEGER value: '书一'")
+  result = self._query(query)
+/usr/local/lib/python3.5/dist-packages/pymysql/cursors.py:170: Warning: (1292, "Truncated incorrect INTEGER value: '书二'")
+  result = self._query(query)
+/usr/local/lib/python3.5/dist-packages/pymysql/cursors.py:170: Warning: (1292, "Truncated incorrect INTEGER value: '书三'")
+  result = self._query(query)
+/usr/local/lib/python3.5/dist-packages/pymysql/cursors.py:170: Warning: (1292, "Truncated incorrect INTEGER value: '书四'")
+  result = self._query(query)
+/usr/local/lib/python3.5/dist-packages/pymysql/cursors.py:170: Warning: (1292, "Truncated incorrect INTEGER value: '书五'")
+  result = self._query(query)
+/usr/local/lib/python3.5/dist-packages/pymysql/cursors.py:170: Warning: (1292, "Truncated incorrect INTEGER value: '书六'")
+  result = self._query(query)
+Out[8]: {'ca': 3, 'cb': 3}
+
+In [9]: Book.objects.annotate(c=Count('author',filter=Q(isDelete=False))).values
+   ...: ()                                                                      
+Out[9]: <QuerySet [{'hot': Decimal('130.33'), 'title': '书一', 'publisher_id': 1, 'publish_day': datetime.date(2017, 1, 18), 'price': Decimal('141.12'), 'isDelete': False, 'id': 1, 'c': 3}, {'hot': Decimal('130.33'), 'title': '书二', 'publisher_id': 1, 'publish_day': datetime.date(2018, 1, 19), 'price': Decimal('263.33'), 'isDelete': False, 'id': 2, 'c': 3}, {'hot': Decimal('130.33'), 'title': '书三', 'publisher_id': 3, 'publish_day': datetime.date(2018, 1, 25), 'price': Decimal('486.00'), 'isDelete': False, 'id': 3, 'c': 2}, {'hot': Decimal('130.33'), 'title': '书四', 'publisher_id': 2, 'publish_day': datetime.date(2018, 1, 11), 'price': Decimal('264.00'), 'isDelete': True, 'id': 4, 'c': 0}, {'hot': Decimal('130.33'), 'title': '书五', 'publisher_id': 4, 'publish_day': datetime.date(2018, 1, 29), 'price': Decimal('815.00'), 'isDelete': True, 'id': 5, 'c': 0}, {'hot': Decimal('130.33'), 'title': '书六', 'publisher_id': 2, 'publish_day': datetime.date(2018, 4, 12), 'price': Decimal('42.00'), 'isDelete': True, 'id': 6, 'c': 0}]>
+
+In [10]: Book.objects.annotate(c=Count('author',filter=Q(isDelete=False))).value
+    ...: s('title','c')                                                         
+Out[10]: <QuerySet [{'title': '书一', 'c': 3}, {'title': '书二', 'c': 3}, {'title': '书三', 'c': 2}, {'title': '书四', 'c': 0}, {'title': '书五', 'c': 0}, {'title': '书六', 'c': 0}]>
+
+In [11]: kst=Book.objects.annotate(c=Count('author',filter=Q(isDelete=False))).v
+    ...: alues('title','c')                                                     
+
+In [12]: kst.query.__str__()                                                    
+Out[12]: 'SELECT `book`.`title`, COUNT(CASE WHEN `book`.`isDelete` = False THEN `author_book`.`author_id` ELSE NULL END) AS `c` FROM `book` LEFT OUTER JOIN `author_book` ON (`book`.`id` = `author_book`.`book_id`) GROUP BY `book`.`id` ORDER BY NULL'
+
+In [13]: st=Book.objects.filter(Q(pk=1)|Q(pk=2)).values()                       
+
+In [14]: st                                                                     
+Out[14]: <QuerySet [{'hot': Decimal('130.33'), 'title': '书一', 'publisher_id': 1, 'publish_day': datetime.date(2017, 1, 18), 'price': Decimal('141.12'), 'isDelete': False, 'id': 1}, {'hot': Decimal('130.33'), 'title': '书二', 'publisher_id': 1, 'publish_day': datetime.date(2018, 1, 19), 'price': Decimal('263.33'), 'isDelete': False, 'id': 2}]>
+
+In [15]: st.query.__str__()                                                     
+Out[15]: 'SELECT `book`.`id`, `book`.`title`, `book`.`price`, `book`.`hot`, `book`.`publish_day`, `book`.`publisher_id`, `book`.`isDelete` FROM `book` WHERE (`book`.`id` = 1 OR `book`.`id` = 2)'
+
+In [16]: author.objects.values()                                                
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-16-f56f72ca4a25> in <module>
+----> 1 author.objects.values()
+
+NameError: name 'author' is not defined
+
+In [17]: Author.objects.values()                                                
+Out[17]: <QuerySet [{'author_detail_id': 1, 'id': 1, 'name': '小一'}, {'author_detail_id': 2, 'id': 2, 'name': '小二'}, {'author_detail_id': 3, 'id': 3, 'name': '小三'}, {'author_detail_id': 4, 'id': 4, 'name': '小四'}]>
+
+In [18]: Author_Detail.objects.values()                                         
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-18-22a7240928d2> in <module>
+----> 1 Author_Detail.objects.values()
+
+NameError: name 'Author_Detail' is not defined
+
+In [19]: AuthorDetail.objects.values()                                          
+Out[19]: <QuerySet [{'addr': '北京', 'id': 1}, {'addr': '深圳', 'id': 2}, {'addr': '广州', 'id': 3}, {'addr': '上海', 'id': 4}]>
+
+In [20]: aud=AuthorDetail()                                                     
+
+In [21]: aud.addr='南京'                                                        
+
+In [22]: aud.save()                                                             
+
+In [23]: AuthorDetail.objects.values()                                          
+Out[23]: <QuerySet [{'addr': '北京', 'id': 1}, {'addr': '深圳', 'id': 2}, {'addr': '广州', 'id': 3}, {'addr': '上海', 'id': 4}, {'addr': '南京', 'id': 5}]>
+
+In [24]: aud=AuthorDetail.objects.get(pk=5)                                     
+
+In [25]: aud.addr='杭州'                                                        
+
+In [26]: aud.save()                                                             
+
+In [27]: AuthorDetail.objects.values()                                          
+Out[27]: <QuerySet [{'addr': '北京', 'id': 1}, {'addr': '深圳', 'id': 2}, {'addr': '广州', 'id': 3}, {'addr': '上海', 'id': 4}, {'addr': '杭州', 'id': 5}]>
+
+In [28]: aud=AuthorDetail.objects.get(pk=5).update(addr='南京')                 
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-28-c49cb1c84fc9> in <module>
+----> 1 aud=AuthorDetail.objects.get(pk=5).update(addr='南京')
+
+AttributeError: 'AuthorDetail' object has no attribute 'update'
+
+In [29]: aud=AuthorDetail.objects.filter(pk=5).update(addr='南京')              
+
+In [30]: aud.query.__str__()                                                    
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-30-9ede098fee5a> in <module>
+----> 1 aud.query.__str__()
+
+AttributeError: 'int' object has no attribute 'query'
+
+In [31]: aud                                                                    
+Out[31]: 1
+
+In [32]: AuthorDetail.objects.values()                                          
+Out[32]: <QuerySet [{'addr': '北京', 'id': 1}, {'addr': '深圳', 'id': 2}, {'addr': '广州', 'id': 3}, {'addr': '上海', 'id': 4}, {'addr': '南京', 'id': 5}]>
+
+In [33]: aud=AuthorDetail.objects.get(pk=5)                                     
+
+In [34]: aud.delete()                                                           
+Out[34]: (1, {'testmodel.AuthorDetail': 1})
+
+In [35]: AuthorDetail.objects.values()                                          
+Out[35]: <QuerySet [{'addr': '北京', 'id': 1}, {'addr': '深圳', 'id': 2}, {'addr': '广州', 'id': 3}, {'addr': '上海', 'id': 4}]>
+
+In [36]:                                           
