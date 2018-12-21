@@ -1,0 +1,33 @@
+django查询转成sql语句
+	方法：你把查询结果作变量接收，执行:变量.query.__str__()
+	看到最终sql语句的执行效果
+F查询
+	当条件的两端都是字段的时候，右边原来是个值时，你也直接引用名，但如果是字段，就需要用F查询，F查询就是把这个字段用F字母包起来即可
+	左边字段price
+	右边字段hot
+	price__lt=F('hot')
+	F的包在 django.db.models里
+Q查询
+	弥补了查询的或、与
+	filter(Q(条件1) & Q(条件2))与条件
+	filter(Q(条件1) | Q(条件2))或条件
+
+做django项目时
+	models模型尽量有一个字段:isDelete 是否删除(true,false)
+	对数据库历史数据的维护
+	
+增：建立在新用户，所以才User()
+	user=User()
+	user.save()
+以下两个操作，不能用User(),要用查询语句把记录查出来，查出来之后update更新,delete删除
+删:
+	delete()
+	是否使用,
+	平时 isDelete字段来做假删除
+	定期整理：整理，isDelete=True被复到另一个新表里
+	这里的数据真的delete()了
+
+改：
+	AuthorDetail.objects.filter(pk=5).update(addr='南京') 
+	get不能用update
+	   
