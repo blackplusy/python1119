@@ -1,0 +1,53 @@
+views
+	逻辑:
+		1、models的操作
+		2、做的逻辑判断
+		3、返回模板
+	对象:
+		1、HttpRequest  request 请求
+		2、HttpResponse  render 响应
+	请求的过程中:
+		接收参数
+			request.POST(GET).get('username')
+			从前端页面里获取了username的参数
+			get只能接收一个参数
+			遇到checkbox，复选框要想返回值，加value
+			getlist获取的是一个值的列表
+
+		csrf跨站访问请求伪造(跨站攻击)
+			技术实现：复制网页源码，形成自己的网页，把请求地址换成服务器的，就可以形成跨站攻击
+常用汉字unicode编码库			django在<form>表单中加{% csrf_token %}解决了csrf_token攻击
+		Cookie的实现:
+			cookie本地的存储技术，临时的存储
+			cookie是存在响应里面的，请求可能跟着请求一起发送
+			cookie是客户端的页面技术
+			写  HttpResponse
+			读  HttpRequest
+				设置  cookie
+					resp=HttpResponse(lover)
+    					resp.set_cookie()	
+		共享session:发生在多个服务器完成一次登陆，共享使用的情况下
+			python中的session都是通过HttpRequest对象来实现的
+			session是服务器的技术
+			request.session['username']=username
+			pyspark
+			session一般用在:一次性登陆，全页面使用
+		图片验码证的实现
+			pillow图像处理模块
+			Image图片  ImageDraw图片画布 ImageFont图片字体 
+			实现思路:
+			1、背景后面画一些线或点
+			2、在前面画一个字符(汉字编码\u4e00 \u9f)
+			Image图片参数:
+				第一个模式
+				第二个参数是大小,类型为元组
+				第三个参数是背景颜色 ,类型为元素
+			im=Image.new(以上三个参数）
+			draw=ImageDraw.draw(im)
+			draw.point(xy,fill=fillcolor)画点
+			draw.line画线
+			draw.text画文本
+			ios=BytesIO()把画的内容转成字节
+			im.save(ios,'png')把图片读出来存到BytesIO中，存成'png'格式
+			return HttpResponse(ios.getvalue(),'image/png')在浏览器页面上以image/png的形式渲染，
+		图片验证码会对应一个访问地址，在前端网页<img src='图片验证码请求地址'/>
