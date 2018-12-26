@@ -1,0 +1,51 @@
+mvt前后端半分离
+templates
+
+创建模板:
+	把html文件中共有的代码提取出来,形成新的文件，叫模板
+	具体的html文件有自己特有的代码时，可以在模板开接口{% block 接口的名称 %}
+	所有具体的html文件都可以继承该模板{% extends 模板文件 %},
+	继承之后，模板的代码就会作用在具体的网页上面来
+	网页自己特有的代码就写在{% block 接口名称 %}{%endblock %}之间就可以
+模板思维的好处：
+	把整个页面进行合理化的分工,
+	特效进行合理化的分工
+凡是继承过的页面，只能在接口出现html代码，在其它地方出现html代码无效 
+模板中有循环:
+	{% for  i in ss %}
+	{% endfor %}
+条件:
+	{% if 条件 %}{%else%}{%endif%}
+	if s == 1 ==左右两边均加空格才有效
+变量输出 
+	{{}}
+html代码转义
+	{% autoescape off%}{%endautoescape%}
+csrf验证:
+	{%csrf_token%}
+项目:
+	1、规范:
+		(1)代码管理规范:码云,文件夹(确定目录，按照模块去分配文件夹django-admin startapp，建应用后urls.py作分级处理),环境(开发) 
+		 urls.py分级处理:
+			外层urls.py写 include
+				  path('admin/', admin.site.urls),
+    				url('user/',include('user.urls')),
+    			url('pay/',include('pay.urls')),
+    			url('cart/',include('cart.urls'))
+			里层urls.py写views.
+				 url('login/',views.login),
+    				url('register/',views.register)
+		(2)代码命名规范:
+			前端 : id class 名称不能混了
+			后端 ：变量和views里面的方法名，类名，字段名
+			功能完成的基础之上，再去抠技术
+		(3)代码逻辑规范:
+			1、写必须的功能注释
+			2、遇到问题先百度,尽量自己研究
+		数据库字段
+		
+
+
+
+
+
